@@ -30,6 +30,8 @@
 				{#each list as lorem}
 						<Lorem author={lorem.author} src={lorem.download_url}/>
 				{/each}
+				{:else}
+					<p class="no-lorem">No lorem ipsum...</p>
 			{/if}
 		{/await}
 	</div>
@@ -53,5 +55,11 @@
 		-moz-column-gap: 30px;
 		-webkit-column-gap: 30px;
 		column-gap: 30px;
+	}
+
+	.no-lorem {
+		text-align: center;
+		font-size: 1.5em;
+		color: #363636;
 	}
 </style>
