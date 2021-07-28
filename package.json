@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"build": "rollup -c",
-		"dev": "rollup -c -w --port 5800" ,
+		"dev": "rollup -c -w --port 5800",
 		"start": "sirv public --single --port 5800",
 		"check": "svelte-check --tsconfig ./tsconfig.json"
 	},
@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.21.1",
+		"gh-pages": "^3.2.3",
 		"sirv-cli": "^1.0.0"
 	}
 }
