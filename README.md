@@ -9,6 +9,7 @@ Project's are on the branche's, so...
 
 TODO:
 
-- Login at github
-- use some data state
-- interact
+- Login at github DONE
+- use some data state DONE
+- interact DONE
+- Oauth github alternative
