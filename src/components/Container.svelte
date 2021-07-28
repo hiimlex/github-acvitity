@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useNavigate } from "svelte-navigator";
-	import { getActivity } from "../api/services/git";
+	import { getActivity, GithubAccount } from "../api/services/git";
 	import { user } from "../store/stores";
 	import Event from "./Event.svelte";
 	import Notify from "./Notify.svelte";
@@ -9,7 +9,7 @@
 
 	let loggof = false;
 
-	let user_value;
+	let user_value: GithubAccount;
 
 	const handleLoggof = () => {
 		loggof = true;
@@ -34,6 +34,10 @@
 {/if}
 
 <div class="container">
+	<div class="welcome">
+		<img src={user_value.avatar_url} alt={user_value.name} />
+		<span class="text">Welcome {user_value.name}!</span>
+	</div>
 	<h1 class="header-title">My Git Activities</h1>
 	<span class="loggof" on:click={handleLoggof}>Loggof</span>
 	{#if user_value}
@@ -62,7 +66,7 @@
 
 	.header-title {
 		margin-top: 38px;
-		font-size: 2.2rem;
+		font-size: 1.2rem;
 		padding: 0;
 		font-weight: 600;
 		text-align: center;
@@ -80,5 +84,33 @@
 		position: absolute;
 		right: 0;
 		top: 12px;
+	}
+
+	.welcome {
+		margin-top: 12px;
+		font-size: 1.4rem;
+		padding: 0;
+		font-weight: 600;
+		text-align: center;
+	}
+
+	.welcome img {
+		width: 48px;
+		height: 48px;
+		margin: 0 auto;
+		border-radius: 50%;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin-right: 4px;
+	}
+
+	.welcome span {
+		margin-top: 12px;
+		padding: 0;
+		font-weight: 600;
+		text-align: center;
 	}
 </style>

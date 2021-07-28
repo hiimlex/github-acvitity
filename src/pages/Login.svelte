@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useLocation, useNavigate } from "svelte-navigator";
+	import { useNavigate } from "svelte-navigator";
 	import { getUser } from "../api/services/git";
 	import Notify from "../components/Notify.svelte";
 	import { user } from "../store/stores";
