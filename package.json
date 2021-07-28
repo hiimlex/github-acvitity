@@ -2,11 +2,13 @@
 	"name": "svelte-app",
 	"version": "1.0.0",
 	"private": true,
+	"homepage": "https://hiimlex.github.io/picsumSvelte/",
 	"scripts": {
 		"build": "rollup -c",
 		"dev": "rollup -c -w --port 5800",
 		"start": "sirv public --single --port 5800",
-		"check": "svelte-check --tsconfig ./tsconfig.json"
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"deploy": "node deploy.js"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^17.0.0",
