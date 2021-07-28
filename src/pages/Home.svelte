@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Container from '../components/Container.svelte';
+	import Container from "../components/Container.svelte";
 </script>
+
 <main>
-	<Container></Container>
+	<Container />
 </main>
 
 <style>

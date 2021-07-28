@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Notify from '../components/Notify.svelte';
-	import {useNavigate, useLocation} from 'svelte-navigator';
-	import { user } from '../store/stores';
-	import { getUser } from '../api/services/git';
+	import Notify from "../components/Notify.svelte";
+	import { useNavigate, useLocation } from "svelte-navigator";
+	import { user } from "../store/stores";
+	import { getUser } from "../api/services/git";
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -12,59 +12,64 @@
 	let errorMsg: string;
 	let logged = false;
 
+	// const github_user = JSON.parse(localStorage.getItem("github_user")) || {};
+
+	// $: if (github_user) {
+	// 	$user = { github_user };
+	// 	navigate("/", { replace: true });
+	// }
+
 	const handleLogin = async () => {
-		if(username){
+		if (username) {
 			try {
 				hasError = false;
 				const data = await getUser(username);
 
-				$user = data;
-				localStorage.setItem('github_user', JSON.stringify(user));
+				$user = { data };
+				localStorage.setItem("github_user", JSON.stringify(data));
 				logged = true;
 
 				setTimeout(() => {
-					const from = ($location.state && $location.state.from) || '/';
-					navigate(from, {replace: true});
+					navigate("/", { replace: true });
 				}, 500);
-
-			} catch(err){
+			} catch (err) {
 				console.log(err);
+
 				hasError = true;
-				errorMsg = 'User Not Found :(';
+				errorMsg = "User Not Found :(";
 
 				setTimeout(() => {
 					hasError = false;
-				}, 2000)
+				}, 2000);
 			}
 		} else {
 			hasError = true;
 			errorMsg = "Hey'o Username is required :)";
 			setTimeout(() => {
 				hasError = false;
-			}, 2000)
+			}, 2000);
 		}
-	}
+	};
 </script>
 
 {#if hasError}
-	<Notify msg={errorMsg} ></Notify>
+	<Notify msg={errorMsg} />
 {/if}
 
 {#if logged}
-	<Notify msg="Success on sign in, have fun :*" success={true}/>
+	<Notify msg="Success on sign in, have fun :*" success={true} />
 {/if}
 
 <div class="login-container">
 	<div class="login-content">
 		<div class="login-title">
+			<i class="feather-github" />
 			<h1>Login</h1>
 			<h3>Insert your github user to sign in</h3>
 		</div>
 		<div class="login-form">
 			<div class="form-group">
-				<label for="username">
-					Username
-				</label>
+				<label for="username"> Username </label>
 				<input
 					type="text"
 					class="form-control"
@@ -75,25 +80,27 @@
 				/>
 			</div>
 			<div class="form-group">
-				<button type="submit" on:click={handleLogin} class="btn btn-primary">Login</button>
+				<button type="submit" on:click={handleLogin} class="btn btn-primary"
+					>Login</button
+				>
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <style>
-  .login-container {
+	.login-container {
 		height: 100vh;
+		width: auto;
 		max-width: 1028px;
 
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-  }
+	}
 
-	.login-content{
+	.login-content {
 		background: #444;
 		width: 80vw;
 		max-width: 682px;
@@ -107,18 +114,23 @@
 		align-items: center;
 	}
 
-	.login-title h1{
+	.login-title i {
+		font-size: 3rem;
+		margin: 0;
+	}
+
+	.login-title h1 {
 		width: 100%;
 		height: auto;
 		font-size: 1.8rem;
-		margin: 4px 0;
+		margin: 8px 0;
 	}
 
-	.login-title h3{
+	.login-title h3 {
 		width: 100%;
 		height: auto;
 		font-weight: 600;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		margin: 4px 0;
 	}
 
@@ -133,7 +145,7 @@
 		align-items: center;
 	}
 
-	.form-group{
+	.form-group {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -150,7 +162,7 @@
 		margin-bottom: 0;
 	}
 
-	.form-group label{
+	.form-group label {
 		color: #fff;
 		font-size: 1rem;
 		text-align: center;
@@ -158,7 +170,7 @@
 		margin-bottom: 4px;
 	}
 
-	.form-group input{
+	.form-group input {
 		flex: 1;
 		width: calc(100% - 24px);
 		height: 18px;
@@ -176,7 +188,7 @@
 		color: #333;
 	}
 
-	.form-group button{
+	.form-group button {
 		width: 100%;
 		height: 50px;
 		padding: 12px;
@@ -196,24 +208,23 @@
 		cursor: pointer;
 	}
 
-	.form-group button:hover{
+	.form-group button:hover {
 		background: #6d6d6d;
 		border-color: #afafaf;
 		color: #fff;
 	}
 
-	.form-group button:focus{
+	.form-group button:focus {
 		background: #6d6d6d;
 		border-color: #afafaf;
 
 		color: #fff;
 	}
 
-	.form-group button:active{
+	.form-group button:active {
 		background: #6d6d6d;
 
 		border-color: #afafaf;
 		color: #fff;
 	}
-
 </style>

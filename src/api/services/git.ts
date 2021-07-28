@@ -86,7 +86,9 @@ export const getUser = async (git_username: string): Promise<GithubAccount> => {
 	}
 };
 
-export const getActivity = async (git_username: string): Promise<any> => {
+export const getActivity = async (
+	git_username: string
+): Promise<GithubEvent[]> => {
 	try {
 		const { data } = await axios.get(
 			`https://api.github.com/users/${git_username}/events`
