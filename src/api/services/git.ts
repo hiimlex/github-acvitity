@@ -55,7 +55,7 @@ type EventType =
 
 export interface GithubEvent {
 	id: number;
-	type: EventType;
+	type: string | EventType;
 	actor: {
 		id: number;
 		login: string;
@@ -70,8 +70,8 @@ export interface GithubEvent {
 		url: string;
 	};
 	payload: any;
-	created_at: Date;
-	public: boolean;
+	created_at?: Date;
+	public?: boolean;
 }
 
 export const getUser = async (git_username: string): Promise<GithubAccount> => {

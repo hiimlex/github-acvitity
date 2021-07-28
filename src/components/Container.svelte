@@ -2,8 +2,7 @@
 	import { useNavigate } from "svelte-navigator";
 	import { getActivity } from "../api/services/git";
 	import { user } from "../store/stores";
-	import { getIconType } from "../utils/getIconType";
-
+	import Event from "./Event.svelte";
 	import Notify from "./Notify.svelte";
 
 	const navigate = useNavigate();
@@ -41,16 +40,7 @@
 		{#await getActivity(user_value.login) then events}
 			{#if events}
 				{#each events as event}
-					<div class="event">
-						<div class="event-type">
-							{#if event.type}
-								{@html getIconType(event.type)}
-								<span style="margin-left: 4px;">{event.type}</span>
-							{:else}
-								<i class="feather-github" />
-							{/if}
-						</div>
-					</div>
+					<Event {event} />
 				{/each}
 			{/if}
 		{/await}
@@ -90,26 +80,5 @@
 		position: absolute;
 		right: 0;
 		top: 12px;
-	}
-
-	.event {
-		margin-top: 18px;
-		margin-bottom: 18px;
-		padding: 12px;
-		border-radius: 4px;
-		background-color: #555;
-		box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
-
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: flex-start;
-	}
-
-	.event-type {
-		font-size: 1.1rem;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
 	}
 </style>

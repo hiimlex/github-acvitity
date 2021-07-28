@@ -1,23 +1,22 @@
 <script lang="ts">
-	import Notify from "../components/Notify.svelte";
-	import { useNavigate, useLocation } from "svelte-navigator";
-	import { user } from "../store/stores";
+	import { useLocation, useNavigate } from "svelte-navigator";
 	import { getUser } from "../api/services/git";
+	import Notify from "../components/Notify.svelte";
+	import { user } from "../store/stores";
 
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	let username: string;
 	let hasError: boolean;
 	let errorMsg: string;
 	let logged = false;
 
-	// const github_user = JSON.parse(localStorage.getItem("github_user")) || {};
+	const github_user = JSON.parse(localStorage.getItem("github_user")) || {};
 
-	// $: if (github_user) {
-	// 	$user = { github_user };
-	// 	navigate("/", { replace: true });
-	// }
+	$: if (github_user) {
+		$user = { github_user };
+		navigate("/", { replace: true });
+	}
 
 	const handleLogin = async () => {
 		if (username) {

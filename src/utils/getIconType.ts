@@ -16,7 +16,7 @@ type EventType =
 	| "SponsorshipEvent"
 	| "WatchEvent";
 
-export const getIconType = (type: EventType): string => {
+export const getIconType = (type: EventType | string): string => {
 	switch (type) {
 		case "CommitCommentEvent":
 			return `<i class="feather-git-commit"></i>`;
