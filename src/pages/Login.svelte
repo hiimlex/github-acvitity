@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Notify from './Notify.svelte';
+  import Notify from '../components/Notify.svelte';
 	import {useNavigate, useLocation} from 'svelte-navigator';
 	import { user } from '../store/stores';
 	import { getUser } from '../api/services/git';
@@ -25,7 +25,7 @@
 				setTimeout(() => {
 					const from = ($location.state && $location.state.from) || '/';
 					navigate(from, {replace: true});
-				}, 1000);
+				}, 500);
 
 			} catch(err){
 				console.log(err);
@@ -46,15 +46,15 @@
 	}
 </script>
 
+{#if hasError}
+	<Notify msg={errorMsg} ></Notify>
+{/if}
+
+{#if logged}
+	<Notify msg="Success on sign in, have fun :*" success={true}/>
+{/if}
+
 <div class="login-container">
-	{#if hasError}
-		<Notify msg={errorMsg} ></Notify>
-	{/if}
-
-	{#if logged}
-		<Notify msg="Success on sign in, have fun :*" success={true}/>
-	{/if}
-
 	<div class="login-content">
 		<div class="login-title">
 			<h1>Login</h1>
