@@ -46,3 +46,15 @@ export const getUser = async (git_username: string): Promise<GithubAccount> => {
 		throw new Error(error);
 	}
 };
+
+export const getActivity = async (git_username: string): Promise<any> => {
+	try {
+		const { data } = await axios.get(
+			`https://api.github.com/users/${git_username}/events`
+		);
+		return data;
+	} catch (error) {
+		console.error(error);
+		throw new Error(error);
+	}
+};
