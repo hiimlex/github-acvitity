@@ -1,8 +1,60 @@
 <script lang="ts">
+  import Notify from './Notify.svelte';
+	import {useNavigate, useLocation} from 'svelte-navigator';
+	import { user } from '../store/stores';
+	import { getUser } from '../api/services/git';
 
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	let username: string;
+	let hasError: boolean;
+	let errorMsg: string;
+	let logged = false;
+
+	const handleLogin = async () => {
+		if(username){
+			try {
+				hasError = false;
+				const data = await getUser(username);
+
+				$user = data;
+				localStorage.setItem('github_user', JSON.stringify(user));
+				logged = true;
+
+				setTimeout(() => {
+					const from = ($location.state && $location.state.from) || '/';
+					navigate(from, {replace: true});
+				}, 1000);
+
+			} catch(err){
+				console.log(err);
+				hasError = true;
+				errorMsg = 'User Not Found :(';
+
+				setTimeout(() => {
+					hasError = false;
+				}, 2000)
+			}
+		} else {
+			hasError = true;
+			errorMsg = "Hey'o Username is required :)";
+			setTimeout(() => {
+				hasError = false;
+			}, 2000)
+		}
+	}
 </script>
 
 <div class="login-container">
+	{#if hasError}
+		<Notify msg={errorMsg} ></Notify>
+	{/if}
+
+	{#if logged}
+		<Notify msg="Success on sign in, have fun :*" success={true}/>
+	{/if}
+
 	<div class="login-content">
 		<div class="login-title">
 			<h1>Login</h1>
@@ -10,15 +62,25 @@
 		</div>
 		<div class="login-form">
 			<div class="form-group">
-				<label for="username">Username</label>
-				<input type="text" class="form-control" id="username" placeholder="Username">
+				<label for="username">
+					Username
+				</label>
+				<input
+					type="text"
+					class="form-control"
+					id="username"
+					name="username"
+					placeholder="Username"
+					bind:value={username}
+				/>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Login</button>
+				<button type="submit" on:click={handleLogin} class="btn btn-primary">Login</button>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <style>
   .login-container {
@@ -28,6 +90,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
   }
 
 	.login-content{
@@ -92,6 +155,7 @@
 		font-size: 1rem;
 		text-align: center;
 		align-self: flex-start;
+		margin-bottom: 4px;
 	}
 
 	.form-group input{

@@ -1,13 +1,5 @@
 <script lang="ts">
-import {fetchLorem} from '../api/services/git'
 
-const fetchGitActivity = async () => {
-	const data = await fetchLorem();
-
-	console.log(data);
-}
-
-fetchGitActivity();
 </script>
 
 <div class="container">

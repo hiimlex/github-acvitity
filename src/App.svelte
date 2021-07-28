@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AppRouter from './AppRouter.svelte';
+  import AppRouter from './routes/AppRouter.svelte';
 </script>
 
 <AppRouter></AppRouter>
