@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GithubEvent } from "../api/services/git";
+	import type { GithubEvent } from "../api/models/githubEvent";
 	import { getIconType } from "../utils/getIconType";
 
 	export let event: GithubEvent;
@@ -73,5 +73,4 @@
 		color: rgb(60, 116, 236);
 		text-decoration: underline;
 	}
-
 </style>

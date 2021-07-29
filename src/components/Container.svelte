@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useNavigate } from "svelte-navigator";
-	import { getActivity, GithubAccount } from "../api/services/git";
+	import { getActivity } from "../api/services/git";
+	import type { GithubAccount } from "../api/models/githubAccount";
 	import { user } from "../store/stores";
 	import Event from "./Event.svelte";
 	import Notify from "./Notify.svelte";
