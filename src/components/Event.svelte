@@ -26,8 +26,10 @@
 				<b>Author</b>: {event.actor.login} on
 			</span>
 			<span>
-				<a class="link" href={event.repo.url} target="_blank"
-					>{event.repo.name}</a
+				<a
+					class="link"
+					href={`https://www.github.com/${event.repo.name}`}
+					target="_blank">{event.repo.name}</a
 				>
 			</span>
 		</div>

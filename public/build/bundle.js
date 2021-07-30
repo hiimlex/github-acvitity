@@ -5061,7 +5061,7 @@ var app = (function () {
     			attr_dev(span1, "class", "svelte-156s1v0");
     			add_location(span1, file$5, 19, 3, 566);
     			attr_dev(a, "class", "link svelte-156s1v0");
-    			attr_dev(a, "href", a_href_value = /*event*/ ctx[0].repo.url);
+    			attr_dev(a, "href", a_href_value = `https://www.github.com/${/*event*/ ctx[0].repo.name}`);
     			attr_dev(a, "target", "_blank");
     			add_location(a, file$5, 23, 4, 644);
     			attr_dev(span2, "class", "svelte-156s1v0");
@@ -5098,7 +5098,7 @@ var app = (function () {
     			if (dirty & /*event*/ 1 && t5_value !== (t5_value = /*event*/ ctx[0].actor.login + "")) set_data_dev(t5, t5_value);
     			if (dirty & /*event*/ 1 && t8_value !== (t8_value = /*event*/ ctx[0].repo.name + "")) set_data_dev(t8, t8_value);
 
-    			if (dirty & /*event*/ 1 && a_href_value !== (a_href_value = /*event*/ ctx[0].repo.url)) {
+    			if (dirty & /*event*/ 1 && a_href_value !== (a_href_value = `https://www.github.com/${/*event*/ ctx[0].repo.name}`)) {
     				attr_dev(a, "href", a_href_value);
     			}
 
@@ -5132,7 +5132,7 @@ var app = (function () {
     	return block;
     }
 
-    // (29:2) {#if event.created_at}
+    // (31:2) {#if event.created_at}
     function create_if_block_1$3(ctx) {
     	let div;
     	let span0;
@@ -5151,14 +5151,14 @@ var app = (function () {
     			span1 = element("span");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "feather-calendar svelte-156s1v0");
-    			add_location(i, file$5, 30, 37, 842);
+    			add_location(i, file$5, 32, 37, 882);
     			set_style(span0, "margin-right", "4px");
     			attr_dev(span0, "class", "svelte-156s1v0");
-    			add_location(span0, file$5, 30, 4, 809);
+    			add_location(span0, file$5, 32, 4, 849);
     			attr_dev(span1, "class", "svelte-156s1v0");
-    			add_location(span1, file$5, 31, 4, 885);
+    			add_location(span1, file$5, 33, 4, 925);
     			attr_dev(div, "class", "date svelte-156s1v0");
-    			add_location(div, file$5, 29, 3, 785);
+    			add_location(div, file$5, 31, 3, 825);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -5180,7 +5180,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(29:2) {#if event.created_at}",
+    		source: "(31:2) {#if event.created_at}",
     		ctx
     	});
 
