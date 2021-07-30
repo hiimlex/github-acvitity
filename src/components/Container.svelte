@@ -36,11 +36,16 @@
 
 <div class="container">
 	<div class="welcome">
-		<img src={user_value.avatar_url} alt={user_value.name} />
-		<span class="text">Welcome {user_value.name}!</span>
+		<div class="avatar">
+			<img src={user_value.avatar_url} alt={user_value.name} />
+			<span class="text">Welcome, {user_value.login}!</span>
+		</div>
+		<span class="loggof" on:click={handleLoggof}
+			><i class="feather-power" /></span
+		>
 	</div>
+
 	<h1 class="header-title">My Git Activities</h1>
-	<span class="loggof" on:click={handleLoggof}>Loggof</span>
 	{#if user_value}
 		{#await getActivity(user_value.login) then events}
 			{#if events}
@@ -66,25 +71,30 @@
 	}
 
 	.header-title {
-		margin-top: 38px;
+		margin-top: 12px;
 		font-size: 1.2rem;
 		padding: 0;
-		font-weight: 600;
+		font-weight: 400;
 		text-align: center;
 	}
 
+	.avatar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
 	.loggof {
-		font-size: 0.8rem;
+		font-size: 1.2rem;
 		text-transform: uppercase;
 		font-weight: bold;
 		cursor: pointer;
-		border: 1px solid #efefef;
-		padding: 4px 8px;
+		padding: 12px !important;
 		border-radius: 4px;
+	}
 
-		position: absolute;
-		right: 0;
-		top: 12px;
+	.loggof:hover {
+		background: #444444ef;
 	}
 
 	.welcome {
@@ -93,23 +103,27 @@
 		padding: 0;
 		font-weight: 600;
 		text-align: center;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	.welcome img {
 		width: 48px;
 		height: 48px;
-		margin: 0 auto;
 		border-radius: 50%;
 
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		margin-right: 4px;
+		margin-right: 12px;
 	}
 
 	.welcome span {
-		margin-top: 12px;
+		margin: 0;
 		padding: 0;
 		font-weight: 600;
 		text-align: center;
