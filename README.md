@@ -1,15 +1,11 @@
-# Svelte Studies
+# Github Activities
 
-I don't know why i'm doing this, but if in the future, i use this as a skill, this could be something special.
+Hello, this is my first attempt to use GIT Api, with a framework.
 
-Project's are on the branche's, so...
+The project is made in SvelteJs with Typescript.(this sound's like PHP and Vue together).
 
-- main: Lorem Picsum implementation
-- github_tl: Github account time line
-
-TODO:
-
-- Login at github DONE
-- use some data state DONE
-- interact DONE
-- Oauth github alternative
+### Steps to run:
+- Clone repo
+- ```npm install```
+- ```npm run dev```
+- ```npm start```
