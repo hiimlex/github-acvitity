@@ -5323,7 +5323,7 @@ var app = (function () {
     			t = text(/*msg*/ ctx[0]);
     			attr_dev(div0, "class", "notify-message");
     			add_location(div0, file$4, 16, 2, 316);
-    			attr_dev(div1, "class", "notify svelte-k5a4c4");
+    			attr_dev(div1, "class", "notify svelte-io2fv8");
     			add_location(div1, file$4, 15, 1, 269);
     		},
     		m: function mount(target, anchor) {

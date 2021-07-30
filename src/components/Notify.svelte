@@ -42,7 +42,7 @@
 <style>
 	.notify {
 		position: absolute;
-		bottom: 0;
+		top: 0;
 		right: -100vw;
 		margin: 6px;
 		width: calc(100% - 36px);
